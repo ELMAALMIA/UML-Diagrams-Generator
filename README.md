@@ -1,132 +1,259 @@
 # UML Diagrams Generator
 
-![Java](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=java&logoColor=white)
-![Swing](https://img.shields.io/badge/Swing-4285F4?style=for-the-badge&logo=java&logoColor=white)
-![UML](https://img.shields.io/badge/UML-FF6B35?style=for-the-badge&logo=uml&logoColor=white)
+A Java application that automatically generates UML class diagrams and package diagrams from compiled Java projects. The application uses Java Reflection API to analyze Java classes and creates visual UML representations with proper notation, relationships, and multiplicity indicators.
 
-##  Description
+## Features
 
-UML-Diagrams-Generator est un outil automatisé qui utilise la réflexion Java pour analyser et représenter la structure de projets Java sous forme de diagrammes UML. Ce projet vise à automatiser la génération de diagrammes UML en extrayant les classes, interfaces, énumérations et annotations d'un projet Java donné.
+### Core Functionality
+-  **Automatic Project Analysis**: Analyzes Java projects using Reflection API
+-  **Class Diagram Generation**: Creates UML class diagrams with:
+  - Classes, Interfaces, Enumerations, Annotations
+  - Relationships (Inheritance, Implementation, Association, Aggregation, Composition)
+  - Multiplicity indicators (1, 0..1, 1..*, 0..*)
+  - Role names on associations
+  - Proper UML notation and symbols
+-  **Package Diagram Generation**: Creates UML package diagrams with:
+  - Package hierarchy
+  - Package dependencies (dashed arrows)
+  - Package contents visualization
+-  **XML/XMI Export**: Exports diagrams to XML and XMI 2.1 formats
+-  **Automatic Compilation**: Automatically compiles Java projects if needed
+-  **Missing Dependencies Handling**: Gracefully handles projects with missing dependencies
 
-##  Fonctionnalités
+### Design Patterns & Architecture
+-  **Strategy Pattern**: Different parsers for different element types
+-  **Factory Pattern**: Centralized parser creation
+-  **Builder Pattern**: Fluent model construction
+-  **Visitor Pattern**: Model traversal and analysis
+-  **Facade Pattern**: Simple analysis interface
+-  **Singleton Pattern**: UI theme management
+-  **Component Pattern**: Reusable UI components
 
-- **Analyse automatique** : Utilise la réflexion Java pour extraire la structure du code
-- **Génération de diagrammes UML** : Création automatique de diagrammes de classes et de packages
-- **Interface graphique intuitive** : Interface utilisateur développée avec Java Swing
-- **Export multiple** : Sauvegarde en formats XML et XMI
-- **Performance optimisée** : Traitement efficace de grands projets Java
-- **Sans dépendances externes** : Utilise uniquement les fonctionnalités natives de Java
+### Code Quality
+- **SOLID Principles**: All five principles applied
+-  **Consistent Design System**: Unified UI theme across all components
+-  **Error Handling**: Robust error handling for missing dependencies
+-  **Clean Architecture**: Well-organized package structure
 
-##  Installation et Configuration
+## Prerequisites
 
-### Prérequis
-- Java JDK 8 ou supérieur
-- IDE Java (Eclipse, IntelliJ IDEA, NetBeans, etc.)
+- **Java Development Kit (JDK) 8 or higher**
+- **Maven 3.6+** (for building)
+- **Compiled Java Project** (with `.class` files in `bin/` directory)
 
-### Installation
-1. Clonez le repository :
+
+## Installation
+
+### Using Maven
+
+1. **Clone the repository:**
+   ```bash
+   git clone <repository-url>
+   cd UML-Diagrams-Generator
+   ```
+
+2. **Build the project:**
+   ```bash
+   mvn clean compile
+   ```
+
+3. **Package the application:**
+   ```bash
+   mvn clean package
+   ```
+
+4. **Run the application:**
+   ```bash
+   mvn exec:java -Dexec.mainClass="org.mql.java.ui.ProjectUploader"
+   ```
+
+## Usage
+
+### Running the Application
+
+1. **Start the application:**
+   ```bash
+   mvn exec:java -Dexec.mainClass="org.mql.java.ui.ProjectUploader"
+   ```
+
+2. **Upload a Java Project:**
+   - Click "Upload Project" button
+   - Select the root directory of your Java project
+   - The application will check if the project is compiled
+   - If not compiled, you'll be prompted to compile automatically
+
+3. **View Diagrams:**
+   - Click "Show Class Diagram" to view the class diagram
+   - Click "Show Package Diagram" to view the package diagram
+   - Click "Show Console Result" to view text output
+
+4. **Export Diagrams:**
+   - Click "Download XML File" to export as XML
+   - Click "Download XMI File" to export as XMI 2.1 format
+
+### Project Requirements
+
+Your Java project should have:
+- A `bin/` directory containing compiled `.class` files
+- Or source files that can be automatically compiled
+
+**Note:** The application requires compiled classes (`.class` files) to analyze. If your project is not compiled, the application can compile it automatically if JDK is available.
+
+## UML Diagram Features
+
+### Class Diagram
+
+- **Elements Displayed:**
+  - Classes with fields, methods, and constructors
+  - Interfaces with methods
+  - Enumerations with values
+  - Annotations
+
+- **Relationships:**
+  - **Generalization** (Inheritance): `----|>` (Blue, solid line with filled arrow)
+  - **Realization** (Implementation): `....|>` (Green, dashed line with open arrow)
+  - **Association**: `---->` (Black, solid line with arrow)
+  - **Aggregation**: `----o` (Orange, solid line with empty diamond)
+  - **Composition**: `----*` (Red, solid line with filled diamond)
+
+- **Multiplicity:**
+  - Displayed as `1`, `0..1`, `1..*`, `0..*` on relationship lines
+  - Automatically detected from arrays, collections, and optional types
+
+- **Role Names:**
+  - Field names displayed as role names on associations
+
+### Package Diagram
+
+- **Package Structure:**
+  - Hierarchical display of packages
+  - Package contents (classes, interfaces, enums)
+  - UML tabbed notation
+
+- **Dependencies:**
+  - Dashed arrows showing package dependencies
+  - Automatically detected from cross-package class usage
+
+## Design Patterns Used
+
+### 1. Strategy Pattern
+Different parsing strategies for classes, interfaces, enums, and annotations.
+
+### 2. Factory Pattern
+Centralized creation of appropriate parsers based on element type.
+
+### 3. Builder Pattern
+Fluent construction of complex model objects.
+
+### 4. Visitor Pattern
+Traversal and analysis of model structures without modifying them.
+
+### 5. Facade Pattern
+Simple interface to complex analysis operations.
+
+### 6. Singleton Pattern
+Single instance of UI theme for consistent styling.
+
+### 7. Component Pattern
+Reusable UI components for consistent design.
+
+## Architecture
+
+The application follows SOLID principles:
+
+- **Single Responsibility**: Each class has one clear purpose
+- **Open/Closed**: Open for extension, closed for modification
+- **Liskov Substitution**: Proper inheritance hierarchy
+- **Interface Segregation**: Focused, specific interfaces
+- **Dependency Inversion**: Depend on abstractions, not concretions
+
+## Export Formats
+
+### XML Format
+Standard XML format containing all project structure, classes, interfaces, and relationships.
+
+### XMI Format
+XMI 2.1 format compatible with UML tools like Enterprise Architect, Visual Paradigm, etc.
+
+## Troubleshooting
+
+### Project Not Found
+- Ensure your project has a `bin/` directory with compiled `.class` files
+- Or allow automatic compilation when prompted
+
+### Missing Dependencies
+- The application will skip classes with missing dependencies
+- A warning will be displayed in the console
+- Other classes will still be analyzed
+
+### Compilation Errors
+- Ensure JDK (not just JRE) is installed
+- Check that all project dependencies are available
+- Review compilation errors in the console
+
+## Building from Source
+
 ```bash
-git clone [URL_DU_REPOSITORY]
-cd UML-Diagrams-Generator
+# Clean and compile
+mvn clean compile
+
+# Run tests
+mvn test
+
+# Package application
+mvn clean package
+
+# Create executable JAR with dependencies
+mvn clean package
+# JAR will be in: target/uml-diagrams-generator-1.0.0-jar-with-dependencies.jar
 ```
 
-2. Compilez le projet :
+## Running the JAR
+
 ```bash
-javac -d bin src/org/mql/java/ui/*.java
+java -jar target/uml-diagrams-generator-1.0.0-jar-with-dependencies.jar
 ```
 
-##  Utilisation
+## Development
 
-### Étape 1 : Lancement de l'application
-Exécutez le fichier principal :
-```bash
-java -cp bin org.mql.java.ui.ProjectUploader
-```
+### Adding New Element Types
 
-### Étape 2 : Upload du projet
-1. Cliquez sur le bouton **Upload** dans l'interface
-2. Sélectionnez le répertoire contenant votre projet Java
-3. L'outil analyse automatiquement la structure du projet
+1. Create a new strategy implementing `ElementParserStrategy`
+2. Register it in `ParserFactory`
+3. The system will automatically use it
 
-### Étape 3 : Visualisation des résultats
-- **Console** : Affiche tous les détails de l'analyse (classes, interfaces, attributs, méthodes)
-- **Diagramme de classes** : Visualisation graphique de la structure UML
-- **Diagramme de packages** : Vue d'ensemble de l'organisation des packages
+### Adding New Analysis Operations
 
-### Étape 4 : Export
-Deux options d'export sont disponibles :
-- **Save XML** : Exporte au format XML standard
-- **Save XMI** : Exporte au format XMI (XML Metadata Interchange)
+1. Create a new visitor implementing `ModelVisitor`
+2. Use `DataAnalyzer.accept()` to apply it
+3. Extract results from the visitor
 
-##  Capture d'écrans
+### Extending UI Components
 
-### Interface de upload
-![Upload Interface](resources/images/upoad.png)
-*Interface permettant de sélectionner le projet Java à analyser*
+1. Use `ComponentFactory` to create components
+2. Use `UITheme` for consistent styling
+3. Follow existing component patterns
 
-### Sélection de projet
-![Project Selection](resources/images/choise.png)
-*Dialogue de sélection du répertoire du projet*
+## Technologies Used
 
-### Résultats d'analyse
-![Analysis Results](resources/images/console.png)
-*Console affichant les résultats détaillés de l'analyse*
-
-### Options de sauvegarde
-![Save Options](resources/images/save.png)
-*Boutons pour exporter en XML ou XMI*
-
-### Diagramme de packages
-![Package Diagram](resources/images/package.png)
-*Diagramme UML généré automatiquement*
+- **Java 8+**: Core language
+- **Java Reflection API**: Class analysis
+- **Java Swing**: User interface
+- **Maven**: Build and dependency management
+- **JUnit 5**: Testing framework
+- **DOM/SAX**: XML processing
 
 
 
-##  Technologies utilisées
+## Authors
 
-- **Java** : Langage de programmation principal
-- **Java Reflection API** : Pour l'analyse dynamique du code
-- **Java Swing** : Interface utilisateur graphique
-- **XML/XMI** : Formats d'export des diagrammes
+[El Maalmi Ayoub : elmaalmiayoub@gmail.com]
 
-##  Développement
+## Acknowledgments
 
-### Compétences techniques
-- Java
-- Java Swing
-- Java Reflection
-- Langage de modélisation unifié (UML)
-- Architecture logicielle
-
-### Fonctionnalités d'analyse
-L'outil extrait automatiquement :
-- Classes et leurs propriétés
-- Interfaces et méthodes
-- Relations d'héritage et d'implémentation
-- Attributs avec modificateurs d'accès
-- Méthodes avec signatures complètes
-- Annotations et métadonnées
-- Structure des packages
-
-##  Contexte 
-- Objectif : Maîtrise de la réflexion Java et des concepts UML
-- Approche : Développement sans bibliothèques externes
-
-## 🤝 Contribution
-
-Les contributions sont les bienvenues ! Pour contribuer :
-
-1. Forkez le projet
-2. Créez une branche pour votre fonctionnalité (`git checkout -b feature/AmazingFeature`)
-3. Committez vos changements (`git commit -m 'Add some AmazingFeature'`)
-4. Poussez vers la branche (`git push origin feature/AmazingFeature`)
-5. Ouvrez une Pull Request
-
-
-##  Contact
-
-Pour toute question ou suggestion, n'hésitez pas à ouvrir une issue sur GitHub.
+- UML 2.5 Specification for diagram standards
+- Java Reflection API for dynamic analysis
 
 ---
 
-⭐ Si ce projet vous a aidé, n'hésitez pas à lui donner une étoile !
+**Last Updated:** 2025
