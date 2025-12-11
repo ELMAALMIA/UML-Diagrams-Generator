@@ -1,0 +1,152 @@
+# ============================================
+# Maven
+# ============================================
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+.mvn/wrapper/maven-wrapper.jar
+.mvn/wrapper/maven-wrapper.properties
+
+# ============================================
+# Compiled Files
+# ============================================
+*.class
+*.jar
+*.war
+*.ear
+*.nar
+bin/
+testFolder/
+
+# ============================================
+# Log Files
+# ============================================
+*.log
+*.txt
+!README.txt
+!LICENSE.txt
+resources/logs/
+src/main/resources/logs/
+target/classes/logs/
+
+# ============================================
+# Generated XML Files
+# ============================================
+# Keep structure template, ignore generated content
+resources/xmlDocument/*.xml
+!resources/xmlDocument/projectStructure.xml
+src/main/resources/xmlDocument/*.xml
+!src/main/resources/xmlDocument/projectStructure.xml
+target/classes/xmlDocument/*.xml
+!target/classes/xmlDocument/projectStructure.xml
+
+# ============================================
+# IDE - IntelliJ IDEA
+# ============================================
+.idea/
+*.iws
+*.iml
+*.ipr
+out/
+
+# ============================================
+# IDE - Eclipse
+# ============================================
+.classpath
+.project
+.settings/
+.metadata
+bin/
+.loadpath
+.recommenders
+
+# ============================================
+# IDE - NetBeans
+# ============================================
+nbproject/private/
+build/
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/
+
+# ============================================
+# IDE - VS Code
+# ============================================
+.vscode/
+*.code-workspace
+
+# ============================================
+# OS Files
+# ============================================
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+$RECYCLE.BIN/
+
+# ============================================
+# Temporary Files
+# ============================================
+*.swp
+*.swo
+*~
+*.bak
+*.tmp
+*.temp
+
+# ============================================
+# Documentation Files (Analysis/Review Docs)
+# ============================================
+CODE_ANALYSIS_AND_IMPROVEMENTS.md
+CODE_REVIEW.md
+DESIGN_PATTERNS_ANALYSIS.md
+IMPROVEMENTS_SUMMARY.md
+JAVA_TO_UML_CONVERSION.md
+MAVEN_MIGRATION_SUMMARY.md
+MISSING_DEPENDENCIES_FIX.md
+README_MAVEN.md
+RUN_APPLICATION.md
+UI_DESIGN_SYSTEM.md
+UML_DIAGRAM_FEATURES.md
+
+# ============================================
+# Build Scripts (Optional - keep if needed)
+# ============================================
+# Uncomment if you want to ignore build scripts
+# run.bat
+# run-maven.bat
+# run-maven.sh
+
+# ============================================
+# Package Files
+# ============================================
+*.zip
+*.tar.gz
+*.rar
+*.7z
+
+# ============================================
+# Virtual Machine Crash Logs
+# ============================================
+hs_err_pid*
+
+# ============================================
+# Application Specific
+# ============================================
+# Old source structure (migrated to Maven)
+src/org/
+
+# Generated output directories
+output/
+exports/
